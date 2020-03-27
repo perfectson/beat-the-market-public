@@ -18,7 +18,7 @@ ENV PATH /home/gitpod/anaconda3/bin:$PATH
 
 #RUN conda config --set allow_conda_downgrades true
 RUN conda install conda=4.6.11
-RUN cconda create -n zip35 python=3.5
+RUN conda create -n zip35 python=3.5
 
 SHELL ["conda", "run", "-n", "zip35", "/bin/bash", "-c"]
 

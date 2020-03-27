@@ -20,13 +20,13 @@ ENV PATH /home/gitpod/anaconda3/bin:$PATH
 RUN conda install conda=4.6.11
 RUN conda create -n zip35 python=3.5
 
-SHELL ["conda", "run", "-n", "zip35", "/bin/bash", "-c"]
+#SHELL ["conda", "run", "-n", "zip35", "/bin/bash", "-c"]
 
 
 #RUN echo "conda activate zip35" > ~/.bashrc
 #RUN source activate /home/gitpod/anaconda3/envs/zip35/
-RUN conda install -c Quantopian zipline
-RUN conda init bash
+#RUN conda install -c Quantopian zipline
+#RUN conda init bash
 #RUN exec bash  
 #RUN conda activate zip35 
 #RUN source activate zip35

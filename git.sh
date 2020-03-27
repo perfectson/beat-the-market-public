@@ -1,3 +1,3 @@
 git commit -a -m "fast"
 git add *
-git push perfectson gitpod-setup
+git push origin perfectson/gitpod-setup

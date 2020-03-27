@@ -2,6 +2,8 @@ FROM gitpod/workspace-full
                     
 USER gitpod
 
+WORKDIR /workspace/beat-the-market-public
+
 SHELL ["/bin/bash", "--login", "-c"]
 
 # Install custom tools, runtime, etc. using apt-get
@@ -14,9 +16,10 @@ RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
 
 ENV PATH /home/gitpod/anaconda3/bin:$PATH
 
+COPY venv.yml .
 #RUN conda config --set allow_conda_downgrades true
 RUN conda install conda=4.6.11
-RUN conda create -n zip35 python=3.5 
+RUN conda env create -f environment.yml
 #RUN conda init bash
 #RUN echo "conda activate zip35" > ~/.bashrc
 RUN source activate /home/gitpod/anaconda3/envs/zip35/

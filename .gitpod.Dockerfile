@@ -16,14 +16,16 @@ RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
 
 ENV PATH /home/gitpod/anaconda3/bin:$PATH
 
-COPY venv.yml .
 #RUN conda config --set allow_conda_downgrades true
 RUN conda install conda=4.6.11
-RUN conda env create -f venv.yml
+RUN cconda create -n zip35 python=3.5
+
+SHELL ["conda", "run", "-n", "zip35", "/bin/bash", "-c"]
+
 #RUN conda init bash
 #RUN echo "conda activate zip35" > ~/.bashrc
 #RUN source activate /home/gitpod/anaconda3/envs/zip35/
-#RUN conda install -c Quantopian zipline
+RUN conda install -c Quantopian zipline
 #RUN exec bash  
 #RUN conda activate zip35 
 #RUN source activate zip35

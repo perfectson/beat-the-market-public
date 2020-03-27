@@ -15,6 +15,8 @@ ENV PATH /home/gitpod/anaconda3/bin:$PATH
 #RUN conda config --set allow_conda_downgrades true
 RUN conda install conda=4.6.11
 RUN conda create -n zip35 python=3.5 
+RUN conda init bash
+RUN conda activate zip35 
 #RUN source activate zip35
 #RUN conda install -n yourenvname [package]
 #RUN sudo apt-get -q update &&      sudo apt-get install -yq bastet &&      sudo rm -rf /var/lib/apt/lists/*

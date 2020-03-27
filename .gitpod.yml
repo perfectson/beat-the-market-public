@@ -1,7 +1,6 @@
 tasks:
-  - init: conda activate zip35
-    command: echo "Replace me with something that should run on every start, or just
-      remove me entirely."
+  - init: ""
+    command: conda activate zip35
 image:
   file: .gitpod.Dockerfile
   

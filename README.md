@@ -12,6 +12,6 @@ export QUANDL_API_KEY="MY_API_KEY"
 zipline ingest -b quandl
 
 #install jupyter
- python3 -m ipykernel install --user
+ python -m ipykernel install --user
  jupyter notebook --generate-config
  jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'

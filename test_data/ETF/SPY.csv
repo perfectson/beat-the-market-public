@@ -1,4 +1,4 @@
-Date,Open,High,Low,Close,Volume,Dividends,Stock Splits
+date,open,high,low,close,volume,dividend,split
 1993-01-29,26.32,26.32,26.19,26.3,1003200,0.0,0
 1993-02-01,26.32,26.49,26.32,26.49,480500,0.0,0
 1993-02-02,26.47,26.56,26.41,26.54,201300,0.0,0

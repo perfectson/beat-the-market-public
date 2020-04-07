@@ -3,31 +3,13 @@ need to create ac_equities_db, after delete this comment
 """
 #%matplotlib inline
 import zipline
-from zipline.api import order_target_percent, symbol, schedule_function, date_rules, time_rules,order, record
+from zipline.api import order_target_percent, symbol, schedule_function, date_rules, time_rules
 from datetime import datetime
 import pytz
 from matplotlib import pyplot as plt
 import pandas as pd
-from collections import OrderedDict
-
-etf = ["SPY","DBC","GLD","IEF","TLT"]
-etf_folder_path = "/workspace/beat-the-market-public/test_data/ETF/" 
-
-data = OrderedDict()
-for sym in etf:
-    full_file_path = etf_folder_path + sym + ".csv"
-    data[sym] = pd.read_csv(full_file_path, index_col=0, parse_dates=['Date'])
-    data[sym] = data[sym][["Open","High","Low","Close","Volume"]]
-    #data[sym] = data[sym].resample("1d").mean()
-    #data[sym].fillna(method="ffill", inplace=True)
 
 
-    print(data[sym].head())
-
-panel = pd.Panel(data)
-panel.minor_axis = ["open","high","low","close","volume"]
-panel.major_axis = panel.major_axis.tz_localize(pytz.utc)
-print(panel["TLT"])
 
 def initialize(context):
     context.securities = {
@@ -65,6 +47,6 @@ result = zipline.run_algorithm(
     initialize=initialize, # Define startup function
     capital_base=100000, # Set initial capital
     data_frequency = 'daily', # Set data frequency
-    data = panel ) # Select bundle
+    bundle = 'etf_bundle' ) # Select bundle
 
 print("Ready to analyze result.")

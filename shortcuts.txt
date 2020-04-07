@@ -8,3 +8,6 @@ pip freeze | grep pandas
 
 #panda data frame to csv
 df.to_csv(r'/workspace/beat-the-market-public/test_data/SPY.csv', index = True, header=True)
+
+#ingest zipline bundle
+zipline ingest -b bundle-name

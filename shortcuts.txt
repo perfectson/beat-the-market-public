@@ -2,3 +2,6 @@
 check what kind of columns a DataFrame has.
 for column in result:
     print(column) 
+
+#check package verion
+pip freeze | grep pandas

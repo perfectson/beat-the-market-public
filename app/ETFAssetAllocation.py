@@ -1,6 +1,4 @@
-"""
-need to create ac_equities_db, after delete this comment
-"""
+
 #%matplotlib inline
 import zipline
 from zipline.api import order_target_percent, symbol, schedule_function, date_rules, time_rules
@@ -37,7 +35,7 @@ def rebalance(context, data):
             order_target_percent(sym, weight)
 
 # Set start and end
-start = datetime(2007, 1, 1, 8, 15, 12, 0, pytz.UTC)
+start = datetime(1997, 1, 1, 8, 15, 12, 0, pytz.UTC)
 end = datetime(2018, 12, 31, 8, 15, 12, 0, pytz.UTC)
 
 # Fire off backtest

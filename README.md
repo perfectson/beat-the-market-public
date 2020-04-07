@@ -15,3 +15,7 @@ zipline ingest -b quandl
  python -m ipykernel install --user
  jupyter notebook --generate-config
  jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'
+
+ #more knowledge
+ https://programtalk.com/python-examples/zipline.utils.calendars.get_calendar/
+ https://pythonprogramming.net/custom-markets-trading-calendar-bitcoin-python-programming-for-finance/?completed=/custom-data-zipline-local-python-programming-for-finance/

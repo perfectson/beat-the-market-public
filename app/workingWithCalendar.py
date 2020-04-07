@@ -4,6 +4,7 @@ need to create ac_equities_db, after delete this comment
 #%matplotlib inline
 import zipline
 from zipline.api import order_target_percent, symbol, schedule_function, date_rules, time_rules,order, record
+from trading_calendars import get_calendar
 from datetime import datetime
 import pytz
 from matplotlib import pyplot as plt
@@ -11,7 +12,16 @@ import pandas as pd
 from collections import OrderedDict
 
 etf = ["SPY","DBC","GLD","IEF","TLT"]
-etf_folder_path = "/workspace/beat-the-market-public/test_data/ETF/" 
+etf_folder_path = "/workspace/beat-the-market-public/test_data/" 
+
+calendar=get_calendar('NYSE')
+start_session = pd.Timestamp('1990-01-01', tz='UTC')
+end_session = pd.Timestamp('today', tz='UTC')
+
+start_date = pd.Timestamp('1993-01-29', tz='UTC')
+end_date = end_session
+# Check valid trading dates, according to the selected exchange calendar
+sessions = calendar.sessions_in_range(start_session, end_session)
 
 data = OrderedDict()
 for sym in etf:
@@ -20,7 +30,14 @@ for sym in etf:
     data[sym] = data[sym][["Open","High","Low","Close","Volume"]]
     #data[sym] = data[sym].resample("1d").mean()
     #data[sym].fillna(method="ffill", inplace=True)
+    # Synch to the official exchange calendar
+    data[sym] = data[sym].reindex(sessions.tz_localize(None))[start_date:end_date]
 
+    # Forward fill missing data
+    data[sym].fillna(method='ffill', inplace=True)
+     
+    # Drop remaining NaN
+    data[sym].dropna(inplace=True)           
 
     print(data[sym].head())
 
@@ -55,7 +72,7 @@ def rebalance(context, data):
             order_target_percent(sym, weight)
 
 # Set start and end
-start = datetime(2007, 1, 1, 8, 15, 12, 0, pytz.UTC)
+start = datetime(2005, 1, 1, 8, 15, 12, 0, pytz.UTC)
 end = datetime(2018, 12, 31, 8, 15, 12, 0, pytz.UTC)
 
 # Fire off backtest

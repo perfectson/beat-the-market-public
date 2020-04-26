@@ -25,7 +25,7 @@ SHELL ["conda", "run", "-n", "zip35", "/bin/bash", "-c"]
 
 RUN conda install -c Quantopian zipline
 RUN conda init bash
-#RUN pip install IbPy2
+RUN pip install IbPy2
 #RUN echo "conda activate zip35" > ~/.bashrc
 #RUN source activate /home/gitpod/anaconda3/envs/zip35/
 

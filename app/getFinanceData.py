@@ -60,7 +60,29 @@ def getNyseData():
                 ticker_hist.index.names=["date"]
                 ticker_hist.to_csv (r'/workspace/beat-the-market-public/test_data/equities/'+ ticker +'.csv', index = True, header=True)
 
-   
+def getIndexData():
+    index_members = pd.read_csv('/workspace/beat-the-market-public/test_data/components/indexes.csv', header=0)
+
+    #today = zipline.api.get_datetime()
+    
+    # Second, get the index makeup for all days prior to today.
+    
+    print(index_members)
+    # Now let's snag the first column of the last, i.e. latest, entry.
+
+    for i in range(len(index_members)):
+
+        ticker = index_members.iloc[i,0]
+
+        if (pathlib.Path("/workspace/beat-the-market-public/test_data/index/"+ticker+".csv").exists()):
+            print(ticker +" already stored")
+        else:
+            ticker_hist = yf.Ticker(ticker).history(period="max") 
+            #print(ticker_hist)
+            if len(ticker_hist) > 2:
+                ticker_hist.columns=["open","high","low","close","volume","dividends","splits"]
+                ticker_hist.index.names=["date"]
+                ticker_hist.to_csv (r'/workspace/beat-the-market-public/test_data/index/'+ ticker +'.csv', index = True, header=True)   
 def getEmptyFile():
 
     csv = pathlib.Path(equities_folder_path).glob("*.csv")
@@ -98,7 +120,8 @@ def removeEmpytfiles(folder_path):
             print(fi + " removed")
        # os.remove(fi)  
 
-getNyseData()
+#getNyseData()
+#getIndexData()
 #removeEmpytfiles(equities_folder_path)
 #changeHeaderToZiplineBundle()
 #getStockData()

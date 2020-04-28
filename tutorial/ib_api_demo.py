@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     port = 7496
 
-    host= "192.168.1.84"
+    host= "80.181.167.181"
 
     tws_conn = None
 

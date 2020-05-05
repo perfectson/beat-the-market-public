@@ -1,2 +1,3 @@
 ipykernel
 pyfolio
+nltk

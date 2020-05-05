@@ -2,6 +2,7 @@ tasks:
    - command: conda deactivate && conda activate zip35 &&
               cp /workspace/beat-the-market-public/fix_zip35/loader.py /workspace/beat-the-market-public/fix_zip35/benchmarks.py /home/gitpod/anaconda3/envs/zip35/lib/python3.5/site-packages/zipline/data &&
               cp /workspace/beat-the-market-public/fix_zip35/loader.py /workspace/beat-the-market-public/fix_zip35/already_ingested_start_data_/custom_stock_data.py /home/gitpod/anaconda3/envs/zip35/lib/python3.5/site-packages/zipline/data/bundles &&
+              cp  /workspace/beat-the-market-public/fix_zip35/already_ingested_start_data_/custom_index_data.py /home/gitpod/anaconda3/envs/zip35/lib/python3.5/site-packages/zipline/data/bundles &&
               cp -RT /workspace/beat-the-market-public/fix_zip35/already_ingested_start_data_/.zipline/ /home/gitpod/.zipline &&
               pip install -r requirements.txt &&
               python -m ipykernel install --user &&

@@ -5,6 +5,7 @@ from nltk.tokenize import TreebankWordTokenizer
 from nltk.corpus import stopwords
 #from nltk.corpus import wordnet
 
+nltk.download('punkt')
 nltk.download('stopwords')
 
 #Tokenize text in sentence basic Ita + Eng
@@ -40,6 +41,16 @@ print("italian stopwords:", ita_stops)
 
 from nltk.corpus import wordnet
 nltk.download('wordnet')
+nltk.download('omw')
 
+# groupings of synonymous words that express the same concept english
 syn = wordnet.synsets("oil")[0]
-print(syn.name," def: ",syn.definition())
+print("EN ", syn.name," def: ",syn.definition(), " Examples: ",syn.examples())
+print("EN hypernyms: ",syn.hypernyms(), " hyponyms: ", syn.hypernyms()[0].hyponyms())
+# groupings of synonymous words that express the same concept italiian
+cane_lemmas = wordnet.lemmas("cane", lang="ita")
+cane_hypernyms = cane_lemmas[0].synset().hypernyms()
+
+print("IT ", cane_lemmas)
+
+# book p15

@@ -1,3 +1,7 @@
 ipykernel
 pyfolio
 nltk
+wordcloud
+Pillow
+keras
+tensorflow-gpu
